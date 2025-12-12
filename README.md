@@ -77,7 +77,7 @@ travelTime = horizontal_distance + (2 × vertical_distance)
 1. Clone the repository
 
    ```bash
-   git clone [https://github.com/theriyasharma24/Hotel-Booking.git](https://github.com/theriyasharma24/Hotel-Booking.git)
+   git clone https://github.com/theriyasharma24/Hotel-Booking.git
    ```
 2. Open the project folder
 
