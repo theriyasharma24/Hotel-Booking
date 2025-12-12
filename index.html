@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="hotelApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Room Booking</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular-sanitize.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller="MainCtrl">
+    <h1 class="title">Hotel Room Reservation System</h1>
+    <div class="controls-wrapper">
+        <div class="controls-card">
+            <input type="number" ng-model="roomsToBook" placeholder="Enter number of rooms" class="pro-input">
+            <div class="button-group">
+                <button class="pro-btn book tooltip" ng-click="bookRooms()"
+                    data-tip="Assigns optimal rooms based on availability">Book</button>
+
+                <button class="pro-btn reset tooltip" ng-click="reset()"
+                    data-tip="Clears all bookings and resets room status">Reset</button>
+
+                <button class="pro-btn random tooltip" ng-click="randomize()"
+                    data-tip="Randomly marks 30% rooms as occupied">Random</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="hotel">
+        <div class="stairs">
+            <div class="label">STAIRS / LIFT</div>
+        </div>
+
+        <div class="floors">
+            <div class="floor-row" ng-repeat="floorObj in floors | orderBy:'-floorObj.floor'">
+                <div class="floor-label">Floor {{floorObj.floor}}</div>
+                <div class="room" ng-repeat="room in floorObj.rooms" ng-class="status[room]" ng-bind="room">
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>Made by <a href="https://riya-sharma-portfolio.netlify.app/#/" target="_blank" rel="noopener noreferrer">Riya</a> with hope!</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+<div class="error-overlay" ng-show="showError">
+    <div class="error-popup animate-popup">
+        <div class="error-title">{{ errorTitle }}</div>
+        <div class="error-message" ng-bind-html="errorMessage"></div>
+        <button class="error-btn" ng-click="closeError()">OK</button>
+    </div>
+</div>
+</html>
